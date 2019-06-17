@@ -18,24 +18,24 @@ export class UserService {
     return this.userRepository.find()
   }
 
-  async create(dto: CreateUserDto): Promise<void> {
-    const { id, username, age } = dto
+  async create(uid: string, dto: CreateUserDto): Promise<void> {
+    const { username, age } = dto
 
     const qb = await getRepository(UserEntity)
       .createQueryBuilder('user')
-      .where('user.id = :id', { id })
+      .where('user.id = :id', { id: uid })
       .limit(1)
 
     const user = await qb.getOne()
 
     if (user) {
-      const errorBody = { id: `user has already exist UserID ${id}` }
+      const errorBody = { id: `user has already exist UserID ${uid}` }
       throw new HttpException({ message: 'Input data validation failed', errorBody }, HttpStatus.CONFLICT)
     }
 
     const newUser = new UserEntity()
 
-    newUser.id = id
+    newUser.id = uid
     newUser.username = username
     newUser.age = age
 

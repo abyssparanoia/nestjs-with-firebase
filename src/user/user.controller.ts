@@ -1,6 +1,7 @@
-import { Get, Post, Body, Controller } from '@nestjs/common'
+import { Get, Post, Body, Controller, Req } from '@nestjs/common'
 import { UserService } from './user.service'
 import { CreateUserDto } from './dto'
+import { Request } from 'express'
 
 @Controller()
 export class UserController {
@@ -13,7 +14,7 @@ export class UserController {
 
   @Post('users')
   // eslint-disable-next-line nestjs/use-validation-pipe
-  create(@Body('user') userDto: CreateUserDto) {
-    return this.userService.create(userDto)
+  create(@Req() request: Request, @Body('user') userDto: CreateUserDto) {
+    return this.userService.create(request.firebaseUser.uid, userDto)
   }
 }
