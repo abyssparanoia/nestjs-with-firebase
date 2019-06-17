@@ -12,6 +12,7 @@ export class UserController {
   }
 
   @Post('users')
+  // eslint-disable-next-line nestjs/use-validation-pipe
   create(@Body('user') userDto: CreateUserDto) {
     return this.userService.create(userDto)
   }
