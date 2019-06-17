@@ -12,12 +12,12 @@
     "start:debug": "nodemon --config nodemon-debug.json",
     "prestart:prod": "rimraf dist && npm run build",
     "start:prod": "node dist/main.js",
-    "lint": "tslint -p tsconfig.json -c tslint.json",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "lint": "eslint --fix -c ./.eslintrc.js 'src/**/*.ts'"
   },
   "dependencies": {
     "@nestjs/common": "^6.0.0",
@@ -37,8 +37,12 @@
     "@types/jest": "^23.3.13",
     "@types/node": "^10.12.18",
     "@types/supertest": "^2.0.7",
+    "@typescript-eslint/eslint-plugin": "^1.10.2",
+    "@typescript-eslint/parser": "^1.10.2",
     "concurrently": "^4.1.0",
+    "eslint": "^5.16.0",
     "eslint-config-prettier": "^5.0.0",
+    "eslint-plugin-nestjs": "^1.2.3",
     "eslint-plugin-prettier": "^3.1.0",
     "husky": "^2.4.1",
     "jest": "^23.6.0",
