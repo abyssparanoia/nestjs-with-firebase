@@ -34,4 +34,7 @@ lerna-debug.log*
 !.vscode/extensions.json
 
 #mysql
-data    
+data
+
+## secret
+serviceAccountKey.json
