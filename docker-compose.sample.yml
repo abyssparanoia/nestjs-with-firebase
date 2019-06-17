@@ -10,6 +10,11 @@ services:
     volumes:
       - .:/api
       - /api/node_modules
+    environment:
+      PROJECT_ID:
+      PRIVATE_KEY:
+      CLIENT_EMAIL:
+
     depends_on:
       - db
 

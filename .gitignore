@@ -38,3 +38,4 @@ data
 
 ## secret
 serviceAccountKey.json
+docker-compose.yml

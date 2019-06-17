@@ -1,8 +1,11 @@
 import * as admin from 'firebase-admin'
-const serviceAccount = require('./firebase-service-account.json')
 
 export default admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
+  credential: admin.credential.cert({
+    projectId: process.env.PROJECT_ID,
+    privateKey: process.env.PRIVATE_KEY,
+    clientEmail: process.env.CLIENT_EMAIL,
+  }),
 })
 
 declare global {
