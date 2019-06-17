@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  db:
+    image: mysql:5.7.19
+    container_name: nestAPI-mysql
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql/sqls:/docker-entrypoint-initdb.d
+      - ./mysql/data:/var/lib/mysql
+      - ./mysql/conf:/etc/mysql/conf.d
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
