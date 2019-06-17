@@ -21,6 +21,21 @@ export class UserService {
   async create(dto: CreateUserDto): Promise<void> {
     const { id, username, age } = dto;
 
+    const qb = await getRepository(UserEntity)
+      .createQueryBuilder('user')
+      .where('user.id = :id', { id })
+      .limit(1);
+
+    const user = await qb.getOne();
+
+    if (user) {
+      const errorBody = { id: `user has already exist UserID ${id}` };
+      throw new HttpException(
+        { message: 'Input data validation failed', errorBody },
+        HttpStatus.CONFLICT,
+      );
+    }
+
     const newUser = new UserEntity();
 
     newUser.id = id;
