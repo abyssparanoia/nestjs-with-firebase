@@ -5,4 +5,6 @@ export class CreateUserDto {
   readonly username: string
   @IsNotEmpty()
   readonly age: number
+  @IsNotEmpty()
+  readonly avatarUrl: string
 }

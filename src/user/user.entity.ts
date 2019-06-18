@@ -10,4 +10,7 @@ export class UserEntity {
 
   @Column('int')
   age: number
+
+  @Column('varchar')
+  avatarUrl: string
 }

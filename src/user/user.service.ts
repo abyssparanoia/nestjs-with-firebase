@@ -19,7 +19,7 @@ export class UserService {
   }
 
   async create(uid: string, dto: CreateUserDto): Promise<void> {
-    const { username, age } = dto
+    const { username, age, avatarUrl } = dto
 
     const qb = await getRepository(UserEntity)
       .createQueryBuilder('user')
@@ -38,6 +38,7 @@ export class UserService {
     newUser.id = uid
     newUser.username = username
     newUser.age = age
+    newUser.avatarUrl = avatarUrl
 
     const errors = await validate(newUser)
     if (errors.length > 0) {
