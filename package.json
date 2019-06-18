@@ -17,7 +17,8 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "lint": "eslint --fix -c ./.eslintrc.js 'src/**/*.ts'"
+    "lint": "eslint --fix -c ./.eslintrc.js 'src/**/*.ts'",
+    "migrate:init": "ts-node $(npm bin)/typeorm migration:generate -n Initialize"
   },
   "dependencies": {
     "@nestjs/common": "^6.0.0",
