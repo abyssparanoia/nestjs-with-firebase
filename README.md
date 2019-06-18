@@ -18,7 +18,17 @@ $ docker-compose build
 $ docker-compose up -d
 ```
 
-## Running the app
+## Migration
+
+```bash
+# generate migration
+$ docker-compose run --rm api sh -c 'npm run migrate:generate'
+
+# run migrate
+$ docker-compose run --rm api sh -c 'npm run migrate:run'
+```
+
+## Running the app in local
 
 ```bash
 # development

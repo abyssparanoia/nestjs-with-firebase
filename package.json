@@ -18,7 +18,8 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "lint": "eslint --fix -c ./.eslintrc.js 'src/**/*.ts'",
-    "migrate:init": "ts-node $(npm bin)/typeorm migration:generate -n Initialize"
+    "migrate:generate": "ts-node $(npm bin)/typeorm migration:generate -n",
+    "migrate:run": "ts-node $(npm bin)/typeorm migration:run"
   },
   "dependencies": {
     "@nestjs/common": "^6.0.0",
@@ -66,7 +67,7 @@
   },
   "lint-staged": {
     "*.ts": [
-      "eslint -c ./.eslintrc.js 'src/**/*.ts'",
+      "eslint --fix -c ./.eslintrc.js 'src/**/*.ts'",
       "git add"
     ]
   },
